@@ -1,0 +1,10 @@
+﻿TextMesh Pro
+.vs/*
+/Library
+/Logs
+/obj
+/Temp
+/UserSettings
+*.csproj
+*.sln
+.vsconfig
