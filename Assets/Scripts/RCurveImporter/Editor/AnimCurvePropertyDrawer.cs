@@ -15,7 +15,7 @@ namespace fr.lostyn.RCurve
                     var newValue = EditorGUILayout.CurveField( property.animationCurveValue );
 
                     if( EditorGUILayout.DropdownButton( new GUIContent( "" ), FocusType.Passive ) ) {
-                        RCurvePickerWindow.OpenWidow( result => {
+                        RCurvePickerWindow.OpenWidow( property, result => {
                             property.animationCurveValue = new AnimationCurve( result.curve.keys );
                             property.animationCurveValue.preWrapMode = result.curve.preWrapMode;
                             property.animationCurveValue.postWrapMode = result.curve.postWrapMode;

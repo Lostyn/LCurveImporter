@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEditor.AssetImporters;
 using System.IO;
 using System.Globalization;
+using System;
 
 namespace fr.lostyn.RCurve
 {
@@ -25,12 +26,19 @@ namespace fr.lostyn.RCurve
             string[] lineEntry;
             for( int i = 0; i < lines.Length; i++ ) {
                 lineEntry = lines[i].Split( " " );
-                curve.curve.AddKey( float.Parse( lineEntry[0], CultureInfo.InvariantCulture.NumberFormat ), float.Parse( lineEntry[1], CultureInfo.InvariantCulture.NumberFormat ) );
+                curve.curve.AddKey( ParseInput( lineEntry[0] ), ParseInput( lineEntry[1] ) );
             }
 
             ctx.AddObjectToAsset( fileName, textAsset );
             ctx.AddObjectToAsset( fileName, curve );
             ctx.SetMainObject( curve );
+        }
+
+        public float ParseInput(string input ) {
+            if( input.Contains( "." ) )
+                return Single.Parse( input, CultureInfo.InvariantCulture ) ;
+            else 
+                return Single.Parse( input);
         }
     }
 }
